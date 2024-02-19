@@ -1,0 +1,17 @@
+name: build-and-test
+run-name: ${{ github.actor }} build-and-test
+on: [push]
+jobs:
+  build-and-test-job:
+    runs-on: ubuntu-latest
+    container: ros:iron-perception-jammy
+    steps:
+      - run: mkdir -p ros_ws/src
+      - uses: actions/checkout@v4
+        with:
+          path: ros_ws/src/gz_arm
+      - run: apt update
+      - run: apt install -y libceres-dev ros-iron-gz-ros2-control ros-iron-ros2-control ros-iron-ros2-controllers ignition-fortress
+      - run: cd ros_ws && . /opt/ros/iron/setup.sh && colcon build --packages-select gz_arm --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - run: cd ros_ws && . install/setup.sh && AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS=TRUE colcon test --ctest-args tests --packages-select gz_arm
+      - run: cd ros_ws && colcon test-result --all  --verbose

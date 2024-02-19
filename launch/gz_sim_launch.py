@@ -84,13 +84,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    switch_to_velocity_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'switch_controllers',
-             '--deactivate', 'position_controller',
-             '--activate', 'velocity_controller'],
-        output='screen'
-    )
-
     # TODO use tmpfile for sdfpath
     sdf_path = '/tmp/gz_arm.sdf'
     sdf_xacro_path = os.path.join(res_path, 'gz_arm.xacro.sdf')
