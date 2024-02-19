@@ -40,7 +40,7 @@ def main():
     border = 1
     sz = args.size
     img = np.zeros((sz, sz, 1), dtype="uint8")
-    cv2.aruco.drawMarker(dictionary, args.id, sz, img, 1)
+    cv2.aruco.drawMarker(dictionary, args.id, sz, img, border)
 
     if args.out:
         cv2.imwrite(args.out, img)

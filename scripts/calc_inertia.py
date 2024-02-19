@@ -46,14 +46,14 @@ def main():
     zz = i_rect(args.x, args.y)*m
 
     print(f"<mass>{m:0.5f}</mass>")
-    print(f"<inertia>")
+    print("<inertia>")
     print(f"  <ixx>{xx:0.5f}</ixx>")
-    print(f"  <ixy>0</ixy>")
-    print(f"  <ixz>0</ixz>")
+    print("  <ixy>0</ixy>")
+    print("  <ixz>0</ixz>")
     print(f"  <iyy>{yy:0.5f}</iyy>")
-    print(f"  <iyz>0</iyz>")
+    print("  <iyz>0</iyz>")
     print(f"  <izz>{zz:0.5f}</izz>")
-    print(f"</inertia>")
+    print("</inertia>")
 
 
 if __name__ == "__main__":
